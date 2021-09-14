@@ -7,15 +7,15 @@ namespace PizzaApp
 {
     class Program
     {
-        dbPizzaProjectContext context;
+        readonly DbPizzaProjectContext context;
         public Program()
         {
-            context = new dbPizzaProjectContext();
+            context = new DbPizzaProjectContext();
         }
 
         void PrintMenu()
         {
-            string iChoice = "";
+            string iChoice;
             do
             {
                 PrintMenuSelectList();
@@ -36,13 +36,15 @@ namespace PizzaApp
                         Console.WriteLine("------------------------------");
                         break;
                 }
-            } while (iChoice != "2");
+            } while (iChoice != "3");
 
         }
-        void PrintMenuSelectList()
+        static void PrintMenuSelectList()
         {
-            Console.WriteLine("   1)	Login");
-            Console.WriteLine("   2)	Register");
+            Console.WriteLine("   1) Login");
+            Console.WriteLine("   2) Register");
+            Console.WriteLine("   3) Exit");
+
             Console.WriteLine("   --------------------");
             Console.WriteLine();
 
@@ -51,7 +53,7 @@ namespace PizzaApp
         List<User> GetUser(string email , string password)
         {
             List<User> getUser = context.Users.Where(a => a.Email == email && a.Password == password).ToList();
-            if (getUser.Count() == 1)
+            if (getUser.Count == 1)
             {
                 Console.WriteLine("Login successful");
             }
@@ -60,6 +62,17 @@ namespace PizzaApp
                 Console.WriteLine("Your email or pasword wrong");
             }
             return getUser;
+        }
+        bool CheckUserEmail(string email)
+        {
+            List<User> getUser = context.Users.Where(a => a.Email == email).ToList();
+            if (getUser.Count >= 1)
+            {
+                Console.WriteLine("This Email already exist. Please try another or use your email and password");
+                return false;
+            }
+
+            return true;
         }
 
         List<PizzaName> GetPizzasList()
@@ -74,24 +87,29 @@ namespace PizzaApp
         }
         void Login()
         {
-            User user = new User();
+            User user = new();
             string email, password;
             Console.WriteLine("Type your email");
             email = Console.ReadLine();
             Console.WriteLine("Type your pasword");
             password = Console.ReadLine();
             Console.WriteLine(user.Email);
-            List<User> getUser = new List<User>();
+            List<User> getUser = new();
             getUser = GetUser(email, password);
-
-            
         }
 
+        
         void Register()
         {
-            User user = new User();
+            User user = new();
             Console.WriteLine("Type your email");
-            user.Email = Console.ReadLine();
+            string email;
+            do
+            {
+                email = Console.ReadLine();
+                user.Email = email;
+
+            } while (!CheckUserEmail(email));
             Console.WriteLine("Type your pasword");
             user.Password = Console.ReadLine();
             Console.WriteLine("Type your user name");
@@ -103,7 +121,6 @@ namespace PizzaApp
             context.Add(user);
             context.SaveChanges();
             Console.WriteLine("Your registration completed");
-
         }
 
         public static int GetNumber()
@@ -117,7 +134,7 @@ namespace PizzaApp
             return num;
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Hello World!");
             new Program().PrintMenu();

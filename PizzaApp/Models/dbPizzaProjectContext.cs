@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace PizzaApp.Models
 {
-    public partial class dbPizzaProjectContext : DbContext
+    public partial class DbPizzaProjectContext : DbContext
     {
-        public dbPizzaProjectContext()
+        public DbPizzaProjectContext()
         {
         }
 
-        public dbPizzaProjectContext(DbContextOptions<dbPizzaProjectContext> options)
+        public DbPizzaProjectContext(DbContextOptions<DbPizzaProjectContext> options)
             : base(options)
         {
         }
@@ -28,7 +28,6 @@ namespace PizzaApp.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data source=DESKTOP-8PS4036\\KANINISQL2019; Integrated Security=true; Initial catalog=dbPizzaProject");
             }
         }
@@ -168,9 +167,12 @@ namespace PizzaApp.Models
                     .HasColumnName("phone");
             });
 
+#pragma warning disable S3251 // Implementations should be provided for "partial" methods
             OnModelCreatingPartial(modelBuilder);
+#pragma warning disable S3251 // Implementations should be provided for "partial" methods
         }
-
+#pragma warning disable S3251 // Implementations should be provided for "partial" methods
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+#pragma warning disable S3251 // Implementations should be provided for "partial" methods
     }
 }

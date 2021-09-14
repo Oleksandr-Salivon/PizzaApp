@@ -9,7 +9,8 @@
       "PizzaApp/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.9",
-          "Microsoft.EntityFrameworkCore.Tools": "5.0.9"
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.9",
+          "SonarAnalyzer.CSharp": "8.28.0.36354"
         },
         "runtime": {
           "PizzaApp.dll": {}
@@ -415,6 +416,7 @@
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
+      "SonarAnalyzer.CSharp/8.28.0.36354": {},
       "System.Collections/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1297,6 +1299,13 @@
       "sha512": "sha512-c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "path": "runtime.native.system/4.3.0",
       "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
+    },
+    "SonarAnalyzer.CSharp/8.28.0.36354": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8tlekGMg4z/pjNoEuiy69hnCO62fGRs53rPMdv3HpjpvTVme47ZxPc3wIinkbgea+9c9GLMw2q9zoIGXOCgHmQ==",
+      "path": "sonaranalyzer.csharp/8.28.0.36354",
+      "hashPath": "sonaranalyzer.csharp.8.28.0.36354.nupkg.sha512"
     },
     "System.Collections/4.3.0": {
       "type": "package",

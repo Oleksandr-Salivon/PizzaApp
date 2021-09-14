@@ -479,6 +479,9 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "SonarAnalyzer.CSharp/8.28.0.36354": {
+        "type": "package"
+      },
       "System.Collections/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2280,6 +2283,27 @@
         "lib/netstandard1.0/_._",
         "runtime.native.system.4.3.0.nupkg.sha512",
         "runtime.native.system.nuspec"
+      ]
+    },
+    "SonarAnalyzer.CSharp/8.28.0.36354": {
+      "sha512": "8tlekGMg4z/pjNoEuiy69hnCO62fGRs53rPMdv3HpjpvTVme47ZxPc3wIinkbgea+9c9GLMw2q9zoIGXOCgHmQ==",
+      "type": "package",
+      "path": "sonaranalyzer.csharp/8.28.0.36354",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/Google.Protobuf.dll",
+        "analyzers/Newtonsoft.Json.dll",
+        "analyzers/SonarAnalyzer.CFG.dll",
+        "analyzers/SonarAnalyzer.CSharp.dll",
+        "analyzers/SonarAnalyzer.dll",
+        "images/sonarsource_64.png",
+        "license/THIRD-PARTY-NOTICES.txt",
+        "sonaranalyzer.csharp.8.28.0.36354.nupkg.sha512",
+        "sonaranalyzer.csharp.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
       ]
     },
     "System.Collections/4.3.0": {
@@ -5792,7 +5816,8 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.9",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.9"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.9",
+      "SonarAnalyzer.CSharp >= 8.28.0.36354"
     ]
   },
   "packageFolders": {
@@ -5843,6 +5868,12 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.9, )"
+          },
+          "SonarAnalyzer.CSharp": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.28.0.36354, )"
           }
         },
         "imports": [

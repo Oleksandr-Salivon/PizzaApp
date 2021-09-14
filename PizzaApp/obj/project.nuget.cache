@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/9iZj7weIkiTZAbrjODWDM5AQAYVXfFJFJXpIL5SXSg3UQXZmhx8v277kNqNA5p5Gl7OB7c+DtXdYv+R8eFo8A==",
+  "dgSpecHash": "YFp9GlAIVu2Zv5VV1w/kuB0eH28A1EA9n2ogUliogK5gtCuAd80wOZqwD6uziJd1fCF/TjViQb/4iAmmvlR4sg==",
   "success": true,
   "projectFilePath": "D:\\Kanini\\Batch2\\PizzaApp\\PizzaApp\\PizzaApp.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\Oleksandr\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\Oleksandr\\.nuget\\packages\\sonaranalyzer.csharp\\8.28.0.36354\\sonaranalyzer.csharp.8.28.0.36354.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\Oleksandr\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
