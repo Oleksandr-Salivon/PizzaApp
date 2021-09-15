@@ -48,9 +48,9 @@ order_id int identity (1,1) primary key,
 user_id varchar (50) foreign key references Users (email),
 status varchar (50), 
 totalPrice float,
-delivercharge varchar (50),
+delivercharge float,
 )
-
+select * from Orders
 create table OrdersDetails
 (
 ordersDetails_id int identity (1,1) primary key,

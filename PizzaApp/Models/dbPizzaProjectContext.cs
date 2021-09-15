@@ -41,8 +41,8 @@ namespace PizzaApp.Models
                 entity.Property(e => e.OrderId).HasColumnName("order_id");
 
                 entity.Property(e => e.Delivercharge)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
+                    //.HasMaxLength(50)
+                    //.IsUnicode(false)
                     .HasColumnName("delivercharge");
 
                 entity.Property(e => e.Status)

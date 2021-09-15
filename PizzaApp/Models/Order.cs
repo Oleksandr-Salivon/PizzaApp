@@ -16,7 +16,7 @@ namespace PizzaApp.Models
         public string UserId { get; set; }
         public string Status { get; set; }
         public double? TotalPrice { get; set; }
-        public string Delivercharge { get; set; }
+        public double? Delivercharge { get; set; }
 
         public virtual User User { get; set; }
         public virtual ICollection<OrdersDetail> OrdersDetails { get; set; }
