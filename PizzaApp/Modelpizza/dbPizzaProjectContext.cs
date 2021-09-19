@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace PizzaApp.Models
+namespace PizzaApp.Modelpizza
 {
     public partial class DbPizzaProjectContext : DbContext
     {
@@ -27,22 +27,26 @@ namespace PizzaApp.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data source=DESKTOP-8PS4036\\KANINISQL2019; Integrated Security=true; Initial catalog=dbPizzaProject");
-            }
+                if (System.Environment.MachineName == "DESKTOP-8PS4036")
+                {
+                    optionsBuilder.UseSqlServer("Data source=DESKTOP-8PS4036\\KANINISQL2019; Integrated Security=true; Initial catalog=dbPizzaProject");
+                }
+                else if (System.Environment.MachineName == "KANINI-LTP-534")
+                {
+                    optionsBuilder.UseSqlServer("Data Source=KANINI-LTP-534\\SQLSERVERPAVI; user id=sa; password=murugi@1999; Initial catalog=dbPizzaProject");
+
+                }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Cyrillic_General_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.Property(e => e.OrderId).HasColumnName("order_id");
 
                 entity.Property(e => e.Delivercharge)
-                    //.HasMaxLength(50)
-                    //.IsUnicode(false)
                     .HasColumnName("delivercharge");
 
                 entity.Property(e => e.Status)
@@ -60,13 +64,13 @@ namespace PizzaApp.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Orders__user_id__45F365D3");
+                    .HasConstraintName("FK__Orders__user_id__3C69FB99");
             });
 
             modelBuilder.Entity<OrdersDetail>(entity =>
             {
                 entity.HasKey(e => e.OrdersDetailsId)
-                    .HasName("PK__OrdersDe__232A061D465C97E6");
+                    .HasName("PK__OrdersDe__232A061D38F86718");
 
                 entity.Property(e => e.OrdersDetailsId).HasColumnName("ordersDetails_id");
 
@@ -77,37 +81,43 @@ namespace PizzaApp.Models
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrdersDetails)
                     .HasForeignKey(d => d.OrderId)
-                    .HasConstraintName("FK__OrdersDet__order__48CFD27E");
+                    .HasConstraintName("FK__OrdersDet__order__3F466844");
 
                 entity.HasOne(d => d.PizzaNumberNavigation)
                     .WithMany(p => p.OrdersDetails)
                     .HasForeignKey(d => d.PizzaNumber)
-                    .HasConstraintName("FK__OrdersDet__pizza__49C3F6B7");
+                    .HasConstraintName("FK__OrdersDet__pizza__403A8C7D");
             });
 
             modelBuilder.Entity<OrdersNumberDetail>(entity =>
             {
-                entity.HasNoKey();
-
+               
+                entity.HasKey(e => new { e.ID })
+                    .HasName("ID");
+               
                 entity.Property(e => e.OrdersNumberDetailsId).HasColumnName("ordersNumberDetails_id");
 
                 entity.Property(e => e.TopppingId).HasColumnName("toppping_id");
 
                 entity.HasOne(d => d.OrdersNumberDetails)
-                    .WithMany()
+                    .WithMany(p => p.OrdersNumberDetails)
                     .HasForeignKey(d => d.OrdersNumberDetailsId)
-                    .HasConstraintName("FK__OrdersNum__order__4BAC3F29");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrdersNum__order__5CD6CB2B");
 
                 entity.HasOne(d => d.Toppping)
-                    .WithMany()
+                    .WithMany(p => p.OrdersNumberDetails)
                     .HasForeignKey(d => d.TopppingId)
-                    .HasConstraintName("FK__OrdersNum__toppp__4CA06362");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__OrdersNum__toppp__5DCAEF64");
             });
+
+            
 
             modelBuilder.Entity<PizzaName>(entity =>
             {
                 entity.HasKey(e => e.PizzaId)
-                    .HasName("PK__pizzaNam__52B89DE3D0C2FEA5");
+                    .HasName("PK__pizzaNam__52B89DE3F6FFFACF");
 
                 entity.ToTable("pizzaName");
 
@@ -139,7 +149,7 @@ namespace PizzaApp.Models
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Email)
-                    .HasName("PK__Users__AB6E6165E069DD9D");
+                    .HasName("PK__Users__AB6E61651D769263");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(50)
@@ -169,10 +179,11 @@ namespace PizzaApp.Models
 
 #pragma warning disable S3251 // Implementations should be provided for "partial" methods
             OnModelCreatingPartial(modelBuilder);
-#pragma warning disable S3251 // Implementations should be provided for "partial" methods
+#pragma warning restore S3251 // Implementations should be provided for "partial" methods
         }
+
 #pragma warning disable S3251 // Implementations should be provided for "partial" methods
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-#pragma warning disable S3251 // Implementations should be provided for "partial" methods
+#pragma warning restore S3251 // Implementations should be provided for "partial" methods
     }
 }

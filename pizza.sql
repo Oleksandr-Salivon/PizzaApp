@@ -60,7 +60,9 @@ pizza_number int foreign key references pizzaName (pizza_id),
 
 create table OrdersNumberDetails
 (
+ID int identity (1,1) primary key,
 ordersNumberDetails_id int foreign key references OrdersDetails (ordersDetails_id),
 toppping_id int foreign key references Toppings (topping_id),
 )
 
+select * from OrdersNumberDetails

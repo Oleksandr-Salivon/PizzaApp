@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace PizzaApp.Models
+namespace PizzaApp.Modelpizza
 {
     public partial class PizzaName
     {
